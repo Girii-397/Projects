@@ -122,6 +122,29 @@ Base: `/insurance`
   - Body: `{claim_id, review_notes}`
   - Response: `{updated_status}`
 
+## AI Ethics Service
+Base: `/ethics`
+
+### Endpoints
+- **POST /audit**: Run ethics audit on AI model.
+  - Body: `{model_id, data_sample}`
+  - Response: `{bias_score, fairness_report}`
+- **GET /audits/{model_id}**: Get audit history.
+  - Response: `{audits: [...], recommendations: [...]}`
+
+## Metaverse Integration Service
+Base: `/metaverse`
+
+### Endpoints
+- **POST /session/start**: Start metaverse session.
+  - Body: `{patient_id, session_type}`
+  - Response: `{session_id, vr_link}`
+- **GET /session/{session_id}**: Get session data.
+  - Response: `{data, duration, summary}`
+- **POST /hologram/render**: Render holographic imaging.
+  - Body: `{imaging_data}`
+  - Response: `{hologram_url}`
+
 ## GraphQL Schema (Shared)
 ```graphql
 type Query {
@@ -134,6 +157,8 @@ type Query {
   labTests(patientId: ID): [LabTest]
   vaccinationRecords(patientId: ID): [VaccinationRecord]
   insuranceClaims(patientId: ID): [InsuranceClaim]
+  metaverseSessions(patientId: ID): [MetaverseSession]
+  aiEthicsAudits(modelId: ID): [AIEthicsAudit]
 }
 
 type Mutation {
@@ -145,6 +170,8 @@ type Mutation {
   orderLabTest(input: LabTestInput): LabTest
   submitInsuranceClaim(input: InsuranceClaimInput): InsuranceClaim
   recordVaccination(input: VaccinationInput): VaccinationRecord
+  startMetaverseSession(input: MetaverseSessionInput): MetaverseSession
+  runEthicsAudit(input: AIEthicsAuditInput): AIEthicsAudit
 }
 
 type Patient {
@@ -187,6 +214,18 @@ type InsuranceClaim {
   id: ID!
   claimAmount: Float
   status: String
+}
+
+type MetaverseSession {
+  id: ID!
+  sessionType: String
+  vrData: String
+}
+
+type AIEthicsAudit {
+  id: ID!
+  biasScore: Float
+  fairnessReport: String
 }
 
 # Additional types for other entities

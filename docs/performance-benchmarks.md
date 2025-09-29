@@ -3,7 +3,7 @@
 ## Benchmarks
 - **API Response Time**: <200ms for 95% of requests, including triage and chatbot.
 - **AI Inference**: <1s per prediction; <500ms for triage, <2s for chatbot responses.
-- **Database Queries**: <100ms for complex joins; <50ms for pharmacy inventory checks; <30ms for public health outbreak queries.
+- **Database Queries**: <100ms for complex joins; <50ms for pharmacy inventory checks; <30ms for public health outbreak queries; <20ms for ethics audit logs.
 - **Scalability**: Handle 10,000 concurrent users, with emergency spikes up to 20,000.
 
 ## Testing Protocols

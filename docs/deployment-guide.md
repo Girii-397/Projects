@@ -23,7 +23,7 @@
 ## Deployment Steps
 1. Provision cloud resources (AWS EKS).
 2. Configure PostgreSQL with encryption and new schemas.
-3. Deploy microservices (including emergency, mental health, pharmacy, public health, diagnostics, insurance) via Helm charts.
+3. Deploy microservices (including emergency, mental health, pharmacy, public health, diagnostics, insurance, AI ethics, metaverse) via Helm charts.
 4. Set up Istio for service mesh.
 5. Enable monitoring with Prometheus.
 6. Deploy AI models for new features.
@@ -40,5 +40,5 @@
 - Recovery Time Objective: <4 hours.
 
 ## User Training
-- Manuals for staff on UI usage, including emergency triage, mental health chatbot, pharmacy management, public health surveillance, diagnostics workflows, insurance claims.
+- Manuals for staff on UI usage, including emergency triage, mental health chatbot, pharmacy management, public health surveillance, diagnostics workflows, insurance claims, AI ethics auditing, metaverse consultations.
 - Training sessions on AI features and new workflows.

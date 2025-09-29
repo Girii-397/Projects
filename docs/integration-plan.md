@@ -5,7 +5,7 @@
 - **Model Deployment**: Use MLOps with MLflow for versioning, monitoring accuracy, and retraining.
 - **Federated Learning**: Implement for privacy-preserving model improvement across hospitals.
 - **Ethical AI**: Integrate bias detection tools, explainability libraries (e.g., SHAP), and human oversight workflows.
-- **New Modules**: AI models for emergency triage (priority scoring), mental health chatbot (sentiment analysis), pharmacy (drug interaction checks), public health (epidemic prediction), diagnostics (imaging analysis), insurance (fraud detection).
+- **New Modules**: AI models for emergency triage (priority scoring), mental health chatbot (sentiment analysis), pharmacy (drug interaction checks), public health (epidemic prediction), diagnostics (imaging analysis), insurance (fraud detection), AI ethics (bias auditing), metaverse (VR interactions).
 
 ## Data Pipelines
 - **Ingestion**: Kafka for real-time data from IoT/wearables; batch processing with Apache Spark for historical data.
@@ -15,7 +15,7 @@
 
 ## Steps for Integration
 1. Set up AI model registry in MLflow.
-2. Train and deploy models for triage, chatbot, drug interactions, epidemic prediction, imaging analysis, fraud detection.
+2. Train and deploy models for triage, chatbot, drug interactions, epidemic prediction, imaging analysis, fraud detection, ethics auditing, VR interactions.
 3. Deploy models via Kubernetes with auto-scaling.
 4. Implement data pipelines with Apache Airflow for scheduling.
 5. Test integrations with mock data; monitor with Prometheus/Grafana.

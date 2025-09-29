@@ -54,6 +54,11 @@ This schema uses PostgreSQL for the core modules: Hospital Management & Administ
 - **fraud_detection**: Anomaly flags.
 - **reimbursements**: Payment processing.
 
+### Future & Emerging Healthcare
+- **ai_ethics_audits**: Bias and fairness checks.
+- **metaverse_sessions**: Virtual consultations.
+- **genomic_data**: DNA analysis for predictions.
+
 ## ER Diagram
 ```mermaid
 erDiagram
@@ -86,6 +91,9 @@ erDiagram
     INVENTORY ||--o{ PRESCRIPTIONS : supplies
     LAB_TESTS ||--o{ IMAGING_DATA : includes
     INSURANCE_CLAIMS ||--o{ FRAUD_DETECTION : flags
+    PATIENTS ||--o{ METAVERSE_SESSIONS : participates
+    AI_MODELS ||--o{ AI_ETHICS_AUDITS : audited
+    PATIENTS ||--o{ GENOMIC_DATA : has
 ```
 
 ## SQL Schema
@@ -375,6 +383,34 @@ CREATE TABLE reimbursements (
     amount DECIMAL(10,2),
     processed_date DATE,
     status VARCHAR(50)
+);
+
+-- AI Ethics Audits Table
+CREATE TABLE ai_ethics_audits (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    model_id UUID REFERENCES ai_models(id),
+    bias_score DECIMAL(3,2),
+    fairness_report TEXT,
+    audited_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Metaverse Sessions Table
+CREATE TABLE metaverse_sessions (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    patient_id UUID REFERENCES patients(id),
+    session_type VARCHAR(100), -- e.g., consultation, surgery
+    vr_data JSONB,
+    duration INT, -- minutes
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Genomic Data Table
+CREATE TABLE genomic_data (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    patient_id UUID REFERENCES patients(id),
+    dna_sequence TEXT, -- Encrypted
+    risk_predictions JSONB,
+    analyzed_at TIMESTAMP DEFAULT NOW()
 );
 ```
 

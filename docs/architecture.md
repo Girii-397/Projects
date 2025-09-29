@@ -16,7 +16,7 @@ The architecture follows a microservices design deployed on Kubernetes, with mod
 7. **Public Health & Epidemiology**: Tracks outbreaks, surveillance, vaccination, etc.
 8. **Diagnostics & Lab Systems**: Manages tests, imaging, AI analysis, etc.
 9. **Insurance & Billing**: Handles claims, fraud detection, reimbursements, etc.
-10. **Future Integrations**: And remaining modules (to be added in phases).
+10. **Future & Emerging Healthcare**: AI Ethics, Metaverse integration, robotic surgery, genomics, etc.
 
 ## High-Level Architecture Diagram
 ```mermaid
@@ -31,6 +31,8 @@ graph TD
     B --> S[Public Health & Epidemiology Service (Spring Boot)]
     B --> T[Diagnostics & Lab Systems Service (Spring Boot)]
     B --> U[Insurance & Billing Service (Spring Boot)]
+    B --> V[AI Ethics Service (Spring Boot)]
+    B --> W[Metaverse Integration Service (Spring Boot)]
     B --> F[Security Service (OAuth2/SAML)]
     B --> G[Integration Service (FHIR/HL7/IoT)]
     C --> H[PostgreSQL Database (Encrypted, Sharded)]
@@ -42,6 +44,8 @@ graph TD
     S --> H
     T --> H
     U --> H
+    V --> H
+    W --> H
     C --> I[AI/ML Engine (DJL/TensorFlow)]
     D --> I
     E --> I
@@ -51,6 +55,8 @@ graph TD
     S --> I
     T --> I
     U --> I
+    V --> I
+    W --> I
     I --> J[Local LLM (Ollama) for Inference]
     I --> K[Federated Learning Cluster for Training]
     H --> L[Blockchain Layer (for Immutable EHR)]
@@ -69,6 +75,8 @@ graph TD
 - **Public Health & Epidemiology Service**: Tracks outbreaks, surveillance, vaccination. Boundaries: Aggregated data only; no individual patient details without consent.
 - **Diagnostics & Lab Systems Service**: Manages tests, imaging, AI analysis. Boundaries: DICOM/FHIR compliance; integrates with clinical pathways.
 - **Insurance & Billing Service**: Handles claims, fraud detection, reimbursements. Boundaries: Multi-payer support; automated but human-verifiable.
+- **AI Ethics Service**: Monitors AI biases, fairness, human oversight. Boundaries: Cross-cutting; integrates with all AI modules.
+- **Metaverse Integration Service**: Handles virtual consultations, holographic imaging. Boundaries: VR/AR interfaces; secure data transmission.
 - **Shared Services**: Security, Integration, AI/ML are cross-cutting.
 
 ## Security & Compliance

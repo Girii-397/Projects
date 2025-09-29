@@ -115,6 +115,33 @@ flowchart TD
     F --> G[Feedback for AI Model Training]
 ```
 
+## AI Ethics Auditing Data Flow
+This diagram shows bias detection and fairness checks in AI models.
+
+```mermaid
+flowchart TD
+    A[AI Model Outputs Generated] --> B[Ethics Service: Collect Model Data]
+    B --> C[Bias Detection Algorithms Run]
+    C --> D[Fairness Metrics Calculated]
+    D --> E[Audit Report Generated]
+    E --> F[Human Review & Adjustments]
+    F --> G[Model Retrained if Needed]
+    G --> H[Audit Logged for Compliance]
+```
+
+## Metaverse Consultation Data Flow
+This diagram illustrates virtual reality healthcare interactions.
+
+```mermaid
+flowchart TD
+    A[Patient Enters Metaverse Session] --> B[VR Data Captured & Encrypted]
+    B --> C[Holographic Imaging Rendered]
+    C --> D[Remote Doctor Interacts via Avatars]
+    D --> E[Consultation Data Recorded]
+    E --> F[Session Summary Integrated into EHR]
+    F --> G[Follow-up Scheduled in Physical/Virtual]
+```
+
 ## Key Data Flows
 - **Real-Time Streams**: Monitoring data via Kafka for anomaly detection.
 - **Batch Processing**: Historical data for predictive analytics.
