@@ -1,5 +1,7 @@
 # Database Schema for Core Modules
 
+<!-- cspell:words VARCHAR -->
+
 This schema uses PostgreSQL for the core modules: Hospital Management & Administration, Patient-Centric Systems, and Clinical Decision Support. It includes encryption for sensitive data, audit trails, and sharding considerations.
 
 ## Key Tables
@@ -37,6 +39,21 @@ This schema uses PostgreSQL for the core modules: Hospital Management & Administ
 - **inventory**: Drug stock levels.
 - **adherence_tracking**: Patient compliance data.
 
+### Public Health & Epidemiology
+- **outbreak_data**: Disease surveillance.
+- **vaccination_records**: Immunization tracking.
+- **epidemic_models**: Predictive simulations.
+
+### Diagnostics & Lab Systems
+- **lab_tests**: Test orders and results.
+- **imaging_data**: Radiology scans.
+- **ai_analysis**: Automated interpretations.
+
+### Insurance & Billing
+- **insurance_claims**: Claim submissions.
+- **fraud_detection**: Anomaly flags.
+- **reimbursements**: Payment processing.
+
 ## ER Diagram
 ```mermaid
 erDiagram
@@ -52,6 +69,9 @@ erDiagram
     PATIENTS ||--o{ THERAPY_SESSIONS : participates
     PATIENTS ||--o{ STRESS_DATA : provides
     PATIENTS ||--o{ PRESCRIPTIONS : receives
+    PATIENTS ||--o{ LAB_TESTS : undergoes
+    PATIENTS ||--o{ VACCINATION_RECORDS : has
+    PATIENTS ||--o{ INSURANCE_CLAIMS : submits
     DOCTORS ||--o{ APPOINTMENTS : conducts
     DOCTORS ||--o{ DIAGNOSES : provides
     DOCTORS ||--o{ RECOMMENDATIONS : suggests
@@ -61,7 +81,11 @@ erDiagram
     AI_MODELS ||--o{ RECOMMENDATIONS : powers
     AI_MODELS ||--o{ TRIAGE : assists
     AI_MODELS ||--o{ THERAPY_SESSIONS : powers
+    AI_MODELS ||--o{ LAB_TESTS : analyzes
+    AI_MODELS ||--o{ OUTBREAK_DATA : predicts
     INVENTORY ||--o{ PRESCRIPTIONS : supplies
+    LAB_TESTS ||--o{ IMAGING_DATA : includes
+    INSURANCE_CLAIMS ||--o{ FRAUD_DETECTION : flags
 ```
 
 ## SQL Schema
@@ -266,6 +290,91 @@ CREATE TABLE adherence_tracking (
     prescription_id UUID REFERENCES prescriptions(id),
     taken BOOLEAN,
     timestamp TIMESTAMP DEFAULT NOW()
+);
+
+-- Outbreak Data Table
+CREATE TABLE outbreak_data (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    disease VARCHAR(255),
+    location VARCHAR(255),
+    cases INT,
+    ai_prediction DECIMAL(3,2),
+    timestamp TIMESTAMP DEFAULT NOW()
+);
+
+-- Vaccination Records Table
+CREATE TABLE vaccination_records (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    patient_id UUID REFERENCES patients(id),
+    vaccine VARCHAR(255),
+    dose_number INT,
+    administered_date DATE,
+    efficacy DECIMAL(3,2)
+);
+
+-- Epidemic Models Table
+CREATE TABLE epidemic_models (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    model_name VARCHAR(255),
+    parameters JSONB,
+    prediction_results JSONB,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Lab Tests Table
+CREATE TABLE lab_tests (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    patient_id UUID REFERENCES patients(id),
+    test_type VARCHAR(255),
+    results JSONB,
+    ai_interpretation TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Imaging Data Table
+CREATE TABLE imaging_data (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    lab_test_id UUID REFERENCES lab_tests(id),
+    image_url VARCHAR(500),
+    dicom_data JSONB,
+    ai_analysis TEXT
+);
+
+-- AI Analysis Table
+CREATE TABLE ai_analysis (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    imaging_id UUID REFERENCES imaging_data(id),
+    findings TEXT,
+    confidence DECIMAL(3,2),
+    reviewed BOOLEAN DEFAULT FALSE
+);
+
+-- Insurance Claims Table
+CREATE TABLE insurance_claims (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    patient_id UUID REFERENCES patients(id),
+    claim_amount DECIMAL(10,2),
+    status VARCHAR(50),
+    fraud_score DECIMAL(3,2),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Fraud Detection Table
+CREATE TABLE fraud_detection (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    claim_id UUID REFERENCES insurance_claims(id),
+    flags JSONB,
+    ai_detected BOOLEAN DEFAULT TRUE,
+    reviewed BOOLEAN DEFAULT FALSE
+);
+
+-- Reimbursements Table
+CREATE TABLE reimbursements (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    claim_id UUID REFERENCES insurance_claims(id),
+    amount DECIMAL(10,2),
+    processed_date DATE,
+    status VARCHAR(50)
 );
 ```
 

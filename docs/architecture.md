@@ -1,4 +1,5 @@
 # Hospital Management & Healthcare AI System Architecture
+<!-- cspell:ignore CCPA -->
 
 ## Overview
 This document outlines the overall system architecture for the comprehensive Hospital Management & Healthcare AI System. The system integrates all specified functionalities into a secure, scalable platform prioritizing patient privacy, regulatory compliance (HIPAA, GDPR, CCPA), interoperability (FHIR, HL7, DICOM), and ethical AI use. It supports multi-language interfaces, real-time analytics, predictive modeling, accessibility (WCAG), and IoT/wearable integrations.
@@ -12,7 +13,10 @@ The architecture follows a microservices design deployed on Kubernetes, with mod
 4. **Emergency & Critical Care**: Manages trauma, triage, ICU monitoring, etc.
 5. **Mental Health & Wellness**: Provides chatbot, stress monitoring, therapy support, etc.
 6. **Pharmacy & Medication**: Handles inventory, prescriptions, adherence, etc.
-7. **Future Integrations**: Insurance, Diagnostics, Public Health, and others (to be added in phases).
+7. **Public Health & Epidemiology**: Tracks outbreaks, surveillance, vaccination, etc.
+8. **Diagnostics & Lab Systems**: Manages tests, imaging, AI analysis, etc.
+9. **Insurance & Billing**: Handles claims, fraud detection, reimbursements, etc.
+10. **Future Integrations**: And remaining modules (to be added in phases).
 
 ## High-Level Architecture Diagram
 ```mermaid
@@ -24,6 +28,9 @@ graph TD
     B --> P[Emergency & Critical Care Service (Spring Boot)]
     B --> Q[Mental Health & Wellness Service (Spring Boot)]
     B --> R[Pharmacy & Medication Service (Spring Boot)]
+    B --> S[Public Health & Epidemiology Service (Spring Boot)]
+    B --> T[Diagnostics & Lab Systems Service (Spring Boot)]
+    B --> U[Insurance & Billing Service (Spring Boot)]
     B --> F[Security Service (OAuth2/SAML)]
     B --> G[Integration Service (FHIR/HL7/IoT)]
     C --> H[PostgreSQL Database (Encrypted, Sharded)]
@@ -32,12 +39,18 @@ graph TD
     P --> H
     Q --> H
     R --> H
+    S --> H
+    T --> H
+    U --> H
     C --> I[AI/ML Engine (DJL/TensorFlow)]
     D --> I
     E --> I
     P --> I
     Q --> I
     R --> I
+    S --> I
+    T --> I
+    U --> I
     I --> J[Local LLM (Ollama) for Inference]
     I --> K[Federated Learning Cluster for Training]
     H --> L[Blockchain Layer (for Immutable EHR)]
@@ -53,6 +66,9 @@ graph TD
 - **Emergency & Critical Care Service**: Handles triage, ICU monitoring, organ matching. Boundaries: Real-time alerts; integrates with geolocation and IoT.
 - **Mental Health & Wellness Service**: Provides AI chatbots, stress monitoring, therapy. Boundaries: Privacy-focused; sentiment analysis with ethical safeguards.
 - **Pharmacy & Medication Service**: Manages inventory, prescriptions, adherence. Boundaries: Drug interaction checks; integrates with clinical data.
+- **Public Health & Epidemiology Service**: Tracks outbreaks, surveillance, vaccination. Boundaries: Aggregated data only; no individual patient details without consent.
+- **Diagnostics & Lab Systems Service**: Manages tests, imaging, AI analysis. Boundaries: DICOM/FHIR compliance; integrates with clinical pathways.
+- **Insurance & Billing Service**: Handles claims, fraud detection, reimbursements. Boundaries: Multi-payer support; automated but human-verifiable.
 - **Shared Services**: Security, Integration, AI/ML are cross-cutting.
 
 ## Security & Compliance

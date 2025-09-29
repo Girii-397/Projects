@@ -197,9 +197,105 @@ classDiagram
     Patient --> Prescription
     Prescription --> AdherenceTracking
     PharmacyService --> Inventory
-```
-
-## Sequence Diagram for Patient Registration
+    ```
+    
+    ## Public Health & Epidemiology Module
+    ```mermaid
+    classDiagram
+        class OutbreakData {
+            +UUID id
+            +String disease
+            +String location
+            +int cases
+            +predictOutbreak()
+        }
+        class VaccinationRecord {
+            +UUID id
+            +UUID patientId
+            +String vaccine
+            +int doseNumber
+            +trackImmunity()
+        }
+        class EpidemicModel {
+            +UUID id
+            +String modelName
+            +runSimulation()
+        }
+        class PublicHealthService {
+            +monitorOutbreaks()
+            +manageVaccinations()
+            +simulateEpidemics()
+        }
+        Patient --> VaccinationRecord
+        PublicHealthService --> OutbreakData
+    ```
+    
+    ## Diagnostics & Lab Systems Module
+    ```mermaid
+    classDiagram
+        class LabTest {
+            +UUID id
+            +UUID patientId
+            +String testType
+            +String results
+            +orderTest()
+        }
+        class ImagingData {
+            +UUID id
+            +UUID labTestId
+            +String imageUrl
+            +analyzeImage()
+        }
+        class AIAnalysis {
+            +UUID id
+            +UUID imagingId
+            +String findings
+            +float confidence
+            +reviewFindings()
+        }
+        class DiagnosticsService {
+            +processLabTest()
+            +analyzeImaging()
+            +generateReport()
+        }
+        Patient --> LabTest
+        LabTest --> ImagingData
+        DiagnosticsService --> AIAnalysis
+    ```
+    
+    ## Insurance & Billing Module
+    ```mermaid
+    classDiagram
+        class InsuranceClaim {
+            +UUID id
+            +UUID patientId
+            +float claimAmount
+            +String status
+            +submitClaim()
+        }
+        class FraudDetection {
+            +UUID id
+            +UUID claimId
+            +String flags
+            +detectFraud()
+        }
+        class Reimbursement {
+            +UUID id
+            +UUID claimId
+            +float amount
+            +processPayment()
+        }
+        class InsuranceService {
+            +validateClaim()
+            +checkFraud()
+            +issueReimbursement()
+        }
+        Patient --> InsuranceClaim
+        InsuranceClaim --> FraudDetection
+        InsuranceService --> Reimbursement
+    ```
+    
+    ## Sequence Diagram for Patient Registration
 ```mermaid
 sequenceDiagram
     participant UI

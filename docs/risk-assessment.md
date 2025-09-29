@@ -5,12 +5,12 @@
 - **Data Breaches**: Sensitive health data exposure in emergency or pharmacy logs.
 - **Regulatory Non-Compliance**: HIPAA/GDPR violations in mental health privacy.
 - **Ethical Concerns**: Misuse of AI for decisions, e.g., incorrect triage or chatbot advice.
-- **Module-Specific**: Triage prioritization errors, chatbot escalating crises improperly, pharmacy dispensing wrong medications.
+- **Module-Specific**: Triage prioritization errors, chatbot escalating crises improperly, pharmacy dispensing wrong medications, public health surveillance privacy breaches, diagnostic AI misinterpretations, insurance claim fraud undetected.
 
 ## Mitigation
 - **AI**: Regular bias audits, diverse training data, explainable AI; specific testing for triage and chatbot accuracy.
 - **Security**: End-to-end encryption, regular penetration testing, incident response plans; extra safeguards for mental health data.
-- **Compliance**: Automated audits, legal reviews, staff training; ensure pharmacy logs meet regulations.
+- **Compliance**: Automated audits, legal reviews, staff training; ensure pharmacy logs meet regulations; anonymize public health data.
 - **Ethics**: Human oversight for critical AI outputs, ethical guidelines; crisis protocols for chatbot.
 
 ## Contingency Plans

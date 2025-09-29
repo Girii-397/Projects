@@ -76,6 +76,45 @@ flowchart TD
     F --> G[Compliance Data Analyzed for Insights]
 ```
 
+## Public Health Surveillance Data Flow
+This diagram shows outbreak monitoring and epidemic prediction.
+
+```mermaid
+flowchart TD
+    A[Health Data Aggregated from Hospitals] --> B[Anonymized Outbreak Data Stored]
+    B --> C[AI Epidemic Predictor: Analyze Trends]
+    C --> D[Vaccination Campaigns Planned]
+    D --> E[Contact Tracing & Quarantine Alerts]
+    E --> F[Model Updated with New Data]
+    F --> G[Public Health Dashboard Updated]
+```
+
+## Diagnostics Workflow Data Flow
+This diagram illustrates lab testing and AI imaging analysis.
+
+```mermaid
+flowchart TD
+    A[Test Ordered via UI] --> B[Lab Test Scheduled & Sample Collected]
+    B --> C[Results Processed & Stored]
+    C --> D[AI Imaging Analysis for Anomalies]
+    D --> E[Doctor Reviews AI Findings]
+    E --> F[Diagnosis Updated in EHR]
+    F --> G[Follow-up Recommendations Generated]
+```
+
+## Insurance Claims Processing Data Flow
+This diagram shows claim submission and fraud detection.
+
+```mermaid
+flowchart TD
+    A[Claim Submitted by Provider] --> B[AI Fraud Detection: Anomaly Check]
+    B --> C[Claim Validated & Processed]
+    C --> D[Reimbursement Calculated]
+    D --> E[Payment Issued to Provider]
+    E --> F[Audit Trail Logged]
+    F --> G[Feedback for AI Model Training]
+```
+
 ## Key Data Flows
 - **Real-Time Streams**: Monitoring data via Kafka for anomaly detection.
 - **Batch Processing**: Historical data for predictive analytics.

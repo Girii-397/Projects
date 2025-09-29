@@ -84,6 +84,44 @@ Base: `/pharmacy`
   - Body: `{prescription_id, taken}`
   - Response: `{status}`
 
+## Public Health & Epidemiology Service
+Base: `/publichealth`
+
+### Endpoints
+- **GET /outbreaks**: Get outbreak data.
+  - Response: `{outbreaks: [...], predictions: [...]}`
+- **POST /vaccination**: Record vaccination.
+  - Body: `{patient_id, vaccine, dose}`
+  - Response: `{record_id, status}`
+- **GET /epidemic/model**: Run epidemic simulation.
+  - Response: `{simulation_results}`
+
+## Diagnostics & Lab Systems Service
+Base: `/diagnostics`
+
+### Endpoints
+- **POST /labtest**: Order lab test.
+  - Body: `{patient_id, test_type}`
+  - Response: `{test_id, status}`
+- **GET /results/{test_id}**: Get test results.
+  - Response: `{results, ai_analysis}`
+- **POST /imaging/analyze**: Analyze imaging.
+  - Body: `{image_data}`
+  - Response: `{findings, confidence}`
+
+## Insurance & Billing Service
+Base: `/insurance`
+
+### Endpoints
+- **POST /claim**: Submit insurance claim.
+  - Body: `{patient_id, amount, details}`
+  - Response: `{claim_id, fraud_score}`
+- **GET /reimbursement/{claim_id}**: Get reimbursement status.
+  - Response: `{status, amount, processed_date}`
+- **POST /fraud/check**: Manual fraud review.
+  - Body: `{claim_id, review_notes}`
+  - Response: `{updated_status}`
+
 ## GraphQL Schema (Shared)
 ```graphql
 type Query {
@@ -93,6 +131,9 @@ type Query {
   triage(patientId: ID): [Triage]
   therapySessions(patientId: ID): [TherapySession]
   prescriptions(patientId: ID): [Prescription]
+  labTests(patientId: ID): [LabTest]
+  vaccinationRecords(patientId: ID): [VaccinationRecord]
+  insuranceClaims(patientId: ID): [InsuranceClaim]
 }
 
 type Mutation {
@@ -101,6 +142,9 @@ type Mutation {
   performTriage(input: TriageInput): Triage
   chatWithBot(input: ChatInput): ChatResponse
   issuePrescription(input: PrescriptionInput): Prescription
+  orderLabTest(input: LabTestInput): LabTest
+  submitInsuranceClaim(input: InsuranceClaimInput): InsuranceClaim
+  recordVaccination(input: VaccinationInput): VaccinationRecord
 }
 
 type Patient {
@@ -125,6 +169,24 @@ type Prescription {
   id: ID!
   medication: String
   dosage: String
+}
+
+type LabTest {
+  id: ID!
+  testType: String
+  results: String
+}
+
+type VaccinationRecord {
+  id: ID!
+  vaccine: String
+  doseNumber: Int
+}
+
+type InsuranceClaim {
+  id: ID!
+  claimAmount: Float
+  status: String
 }
 
 # Additional types for other entities

@@ -1,7 +1,7 @@
 # Hospital Management & Healthcare AI System Documentation
 
 ## Overview
-This system integrates comprehensive healthcare functionalities with AI, including Hospital Management, Patient-Centric, Clinical Decision Support, Emergency & Critical Care, Mental Health & Wellness, and Pharmacy & Medication, prioritizing security and compliance.
+This system integrates comprehensive healthcare functionalities with AI, including Hospital Management, Patient-Centric, Clinical Decision Support, Emergency & Critical Care, Mental Health & Wellness, Pharmacy & Medication, Public Health & Epidemiology, Diagnostics & Lab Systems, and Insurance & Billing, prioritizing security and compliance.
 
 ## Documents
 - [Architecture](architecture.md)
@@ -15,7 +15,7 @@ This system integrates comprehensive healthcare functionalities with AI, includi
 - [Performance Benchmarks](performance-benchmarks.md)
 
 ## Code Skeletons
-Located in `src/` with Spring Boot services for hospital, patient, clinical, emergency, mental-health, and pharmacy modules.
+Located in `src/` with Spring Boot services for hospital, patient, clinical, emergency, mental-health, pharmacy, public-health, diagnostics, and insurance modules.
 
 ## API Docs
 Available at `/swagger-ui.html` after deployment.
