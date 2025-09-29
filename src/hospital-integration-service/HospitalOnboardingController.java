@@ -24,4 +24,14 @@ public class HospitalOnboardingController {
     public ComplianceReport checkCompliance(@PathVariable UUID hospitalId) {
         return onboardingService.checkCompliance(hospitalId);
     }
+
+    @PostMapping("/stores")
+    public Store addStore(@RequestBody Store store) {
+        return onboardingService.addStore(store);
+    }
+
+    @GetMapping("/stores/{hospitalId}")
+    public java.util.List<Store> getStoresByHospital(@PathVariable UUID hospitalId) {
+        return onboardingService.getStoresByHospital(hospitalId);
+    }
 }

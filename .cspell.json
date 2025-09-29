@@ -3,6 +3,8 @@
     "FHIR",
     "Ollama",
     "labtest",
+    "labresults",
+    "labresult",
     "Metaverse",
     "SonarQube",
     "DICOM",
@@ -13,6 +15,8 @@
     "chatbots",
     "pgcrypto",
     "SHAP",
-    "WCAG"
+    "WCAG",
+    "hospitalintegration",
+    "Jwts"
   ]
 }
