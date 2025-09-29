@@ -22,7 +22,7 @@ The architecture follows a microservices design deployed on Kubernetes, with mod
 ```mermaid
 graph TD
     A[User Interfaces: React Web App, React Native Mobile] --> B[API Gateway (Spring Cloud Gateway)]
-    B --> C[Hospital Mgmt Service (Spring Boot)]
+    B --> C[Hospital Management Service (Spring Boot)]
     B --> D[Patient-Centric Service (Spring Boot)]
     B --> E[Clinical Decision Support Service (Spring Boot)]
     B --> P[Emergency & Critical Care Service (Spring Boot)]
@@ -66,7 +66,7 @@ graph TD
 ```
 
 ## Module Boundaries
-- **Hospital Mgmt Service**: Manages hospital operations, resources, billing. Boundaries: No direct patient clinical data; interfaces via APIs.
+- **Hospital Management Service**: Manages hospital operations, resources, billing. Boundaries: No direct patient clinical data; interfaces via APIs.
 - **Patient-Centric Service**: Handles patient records, monitoring, personalization. Boundaries: Secure access controls; integrates with EHR blockchain.
 - **Clinical Decision Support Service**: Provides AI recommendations. Boundaries: Explainable AI; no direct patient actions without human oversight.
 - **Emergency & Critical Care Service**: Handles triage, ICU monitoring, organ matching. Boundaries: Real-time alerts; integrates with geolocation and IoT.

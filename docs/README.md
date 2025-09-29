@@ -1,3 +1,4 @@
+<!-- cspell:words Metaverse -->
 # Hospital Management & Healthcare AI System Documentation
 
 ## Overview

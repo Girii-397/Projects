@@ -85,7 +85,7 @@ Base: `/pharmacy`
   - Response: `{status}`
 
 ## Public Health & Epidemiology Service
-Base: `/publichealth`
+Base: `/public-health`
 
 ### Endpoints
 - **GET /outbreaks**: Get outbreak data.

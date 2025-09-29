@@ -5,7 +5,7 @@ This diagram shows the flow of patient data from registration to discharge, inte
 
 ```mermaid
 flowchart TD
-    A[Patient Registers via UI/App] --> B[Hospital Mgmt Service: Validate & Store Patient Data]
+    A[Patient Registers via UI/App] --> B[Hospital Management Service: Validate & Store Patient Data]
     B --> C[Patient-Centric Service: Create EHR Record]
     C --> D[Appointment Scheduled with AI Conflict Resolution]
     D --> E[Admission: Bed Allocation with Occupancy Prediction]

@@ -1,6 +1,6 @@
 # Database Schema for Core Modules
 
-<!-- cspell:words VARCHAR -->
+<!-- cspell:words VARCHAR METAVERSE -->
 
 This schema uses PostgreSQL for the core modules: Hospital Management & Administration, Patient-Centric Systems, and Clinical Decision Support. It includes encryption for sensitive data, audit trails, and sharding considerations.
 
